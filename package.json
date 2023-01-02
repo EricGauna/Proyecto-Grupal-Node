@@ -1,0 +1,20 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Implementar una API que permita publicar lugares de la ciudad con",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/EricGauna/2-Proyecto-Grupal.git"
+  },
+  "author": "Arturo y Eric",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EricGauna/2-Proyecto-Grupal/issues"
+  },
+  "homepage": "https://github.com/EricGauna/2-Proyecto-Grupal#readme"
+}
