@@ -1,7 +1,7 @@
 {
-  "name": "y",
+  "name": "proyecto-grupal-node",
   "version": "1.0.0",
-  "description": "Implementar una API que permita publicar lugares de la ciudad con",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,12 +9,29 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/EricGauna/2-Proyecto-Grupal.git"
+    "url": "git+https://github.com/EricGauna/2-Proyecto-Grupal.git"
   },
-  "author": "Arturo y Eric",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/EricGauna/2-Proyecto-Grupal/issues"
   },
-  "homepage": "https://github.com/EricGauna/2-Proyecto-Grupal#readme"
+  "homepage": "https://github.com/EricGauna/2-Proyecto-Grupal#readme",
+  "dependencies": {
+      "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^2.3.3",
+    "node-mailjet": "^6.0.0",
+    "sharp": "^0.31.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+}
 }
