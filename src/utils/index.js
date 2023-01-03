@@ -1,3 +1,3 @@
-const generateErrors = require(./generateErrors)
+const generateErrors = require("./generateErrors")
 
-module.exports={ generateErrors }
+module.exports = { generateErrors }
