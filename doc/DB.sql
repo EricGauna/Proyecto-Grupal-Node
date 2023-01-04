@@ -8,41 +8,24 @@ CREATE TABLE users (
     password VARCHAR(100) NOT NULL,
     name VARCHAR(50) NOT NULL,
     role ENUM('admin', 'normal') DEFAULT 'normal'
+
 );
-
-
-CREATE TABLE ciudades (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(200) NOT NULL,
-    description VARCHAR(5000) NOT NULL,
-    ciudadId INT UNSIGNED NOT NULL,
-    FOREIGN KEY (ciudadId)
-        REFERENCES users (id)
-);
-
-
-CREATE TABLE barrios (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(200) NOT NULL,
-    description VARCHAR(5000) NOT NULL,
-    barrioId INT UNSIGNED NOT NULL,
-    userId INT UNSIGNED NOT NULL,
-    FOREIGN KEY (barrioId)
-        REFERENCES ciudades (id),
-    FOREIGN KEY (userId)
-        REFERENCES users (id)
-);
-
 
 CREATE TABLE problemas (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(200) NOT NULL,
     description VARCHAR(5000) NOT NULL,
-    foto VARCHAR(100) NOT NULL,
-    estado BOOLEAN DEFAULT TRUE,
+    barrio VARCHAR(200),
+    ciudad VARCHAR(200),
+    estado BOOLEAN DEFAULT TRUE
+  
+);
+
+CREATE TABLE problemas_images (
+	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+    image VARCHAR(100) NOT NULL,
     problemaId INT UNSIGNED NOT NULL,
-    FOREIGN KEY (problemaId)
-        REFERENCES barrios (id)
+    FOREIGN KEY (problemaId) REFERENCES problemas (id) ON DELETE CASCADE
 );
 
 

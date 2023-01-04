@@ -1,28 +1,27 @@
 const {
-  selectUserById,
-} = require("../repositories/users");
-const { generateError } = require("../utils");
+  selectUserId,
+} = require("../Repositories/users");
+const { generateErrors } = require("../utils");
 
-const checkAdmin = async (req, res, next) => {
+const Admin = async (req, res, next) => {
   try {
     const loggedUserId = req.auth.id;
 
-    const user = await selectUserById(
+    const user = await selectUserId(
       loggedUserId
     );
 
     if (user.role !== "admin") {
-      generateError(
+      generateErrors(
         "You dont't have permissions to perform this action",
         403
       );
     }
 
-    // Si no salta ningún error, hacemos next() para ir al controller
     next();
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = checkAdmin;
+module.exports = Admin;
