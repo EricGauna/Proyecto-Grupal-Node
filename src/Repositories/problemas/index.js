@@ -1,3 +1,7 @@
-const insertProblema = require("../../Repositories/problemas");
+const insertProblema = require("./insertProblema");
+const insertPoblemaImage=require("./insertPoblemaImage")
 
-module.exports = { insertProblema };
+module.exports = {
+  insertProblema,
+  insertPoblemaImage,
+};
