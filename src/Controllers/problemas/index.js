@@ -1,3 +1,4 @@
 const createProblema = require("./createProblema");
+const getProblema=require("./getProblema")
 
-module.exports = { createProblema };
+module.exports = { createProblema, getProblema };

@@ -1,7 +1,9 @@
 const insertProblema = require("./insertProblema");
-const insertPoblemaImage=require("./insertPoblemaImage")
+const insertProblemaImage = require("./insertProblemaImage");
+const SelectProblemas=require("./SelectProblemas")
 
 module.exports = {
   insertProblema,
-  insertPoblemaImage,
+  insertProblemaImage,
+  SelectProblemas,
 };

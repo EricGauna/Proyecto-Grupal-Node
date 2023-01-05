@@ -1,6 +1,6 @@
 const getPool = require("../../Database/getPool");
 
-const insertPoblemaImage = async (
+const insertProblemaImage = async (
   imageName,
   problemaId
 ) => {
@@ -14,4 +14,4 @@ const insertPoblemaImage = async (
   return insertId;
 };
 
-module.exports = insertPoblemaImage;
+module.exports = insertProblemaImage;
