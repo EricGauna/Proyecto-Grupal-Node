@@ -17,9 +17,13 @@ CREATE TABLE problemas (
     description VARCHAR(5000) NOT NULL,
     barrio VARCHAR(200),
     ciudad VARCHAR(200),
-    estado BOOLEAN DEFAULT TRUE
+    userId INT UNSIGNED NOT NULL,
+    estado BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (userId) REFERENCES users(id)
   
 );
+
+
 
 CREATE TABLE problemas_images (
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -40,3 +44,8 @@ CREATE TABLE likes (
         REFERENCES problemas (id)
         ON DELETE CASCADE
 );
+
+drop table likes;
+drop table problemas;
+drop table problemas_images;
+drop table users;
