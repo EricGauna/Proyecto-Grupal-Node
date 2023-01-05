@@ -10,30 +10,24 @@ const {
   generateErrors,
 } = require("../../utils");
 
-const createPost = async (req, res, next) => {
+const createProblema = async (req, res, next) => {
   try {
-    const userRole = req.auth.role;
-
-    if (userRole !== admin) {
-      generateErrors(
-        "You don't have administrator permission to create this problem"
-      );
-    }
+    const userId = req.auth.id;
 
     await createProblemaSchema.validateAsync(
       req.body
     );
 
-    const { title, description, ciudad, barrio } =
+    const { title, description, barrio, ciudad } =
       req.body;
 
     const insertedProblemaId =
       await insertProblema({
         title,
         description,
-        ciudad,
         barrio,
-        problemaId,
+        ciudad,
+        userId,
       });
 
     let images = req.files?.images || [];
@@ -67,9 +61,9 @@ const createPost = async (req, res, next) => {
         id: insertedProblemaId,
         title,
         description,
-        ciudad,
         barrio,
-        problemaId,
+        ciudad,
+        userId,
         images: uploadedImages,
       },
     });
@@ -78,4 +72,4 @@ const createPost = async (req, res, next) => {
   }
 };
 
-module.exports = createPost;
+module.exports = createProblema;

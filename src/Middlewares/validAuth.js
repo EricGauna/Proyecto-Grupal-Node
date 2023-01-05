@@ -24,7 +24,7 @@ const validateAuth = (req, res, next) => {
       process.env.JWT_SECRET
     );
 
-    req.admin = tokenPayload;
+    req.auth = tokenPayload;
 
     next();
   } catch (error) {

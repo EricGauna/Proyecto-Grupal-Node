@@ -2,6 +2,7 @@ require("dotenv").config();
 const cors = require("cors");
 const express =require("express");
 const fileUpload = require("express-fileupload");
+const { createProblema } = require("./Controllers/problemas/");
 const { createUsers, loginUsers } = require("./Controllers/users");
 
 const { PORT } = process.env;
@@ -18,8 +19,10 @@ const { PORT } = process.env;
 
 const {
     handle404,
-    handleErrors
-} =require("./Middlewares")
+    handleErrors,
+    Admin
+} =require("./Middlewares");
+const validateAuth = require("./Middlewares/validAuth");
 
 
 const app = express();
@@ -36,6 +39,7 @@ app.post("/login", loginUsers )
 
 // Endpoints problemas:
 
+app.post("/create", validateAuth, Admin, createProblema)
     
     
 app.use(handle404);

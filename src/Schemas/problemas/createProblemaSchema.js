@@ -5,14 +5,22 @@ const createProblemaSchema = Joi.object({
     .min(4)
     .max(200)
     .required()
-    .messages({
-    }),
+    .messages({}),
   description: Joi.string()
     .min(4)
     .max(5000)
     .required()
-    .messages({
-    }),
+    .messages({}),
+  ciudad: Joi.string()
+    .min(4)
+    .max(100)
+    .required()
+    .messages({}),
+  barrio: Joi.string()
+    .min(4)
+    .max(100)
+    .required()
+    .messages({}),
 });
 
 module.exports = createProblemaSchema;
