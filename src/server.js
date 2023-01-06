@@ -5,15 +5,16 @@ const fileUpload = require("express-fileupload");
 
 const { PORT } = process.env;
 
-// Cotrollers 
+// Cotrollers
 const {
   createUsers,
   loginUsers,
 } = require("./Controllers/users");
 
 const {
-    createProblema,
-    getProblema
+  createProblema,
+  getProblema,
+  toogleStatus,
 } = require("./Controllers/problemas/");
 
 // Middlewares
@@ -24,8 +25,17 @@ const {
   Admin,
 } = require("./Middlewares");
 const validateAuth = require("./Middlewares/validAuth");
+const {
+  toggleLike,
+} = require("./Controllers/likes");
 
 const app = express();
+
+app.use(
+  cors({
+    origin: ["http://127.0.0.1:3306"],
+  })
+);
 
 app.use(express.json());
 app.use(fileUpload());
@@ -44,6 +54,17 @@ app.post(
   createProblema
 );
 app.get("/search", getProblema);
+app.post(
+  "/problemas/:id/like",
+  validateAuth,
+  toggleLike
+);
+app.put(
+  "/problemas/:id",
+  validateAuth,
+  Admin,
+  toogleStatus
+);
 
 app.use(handle404);
 
