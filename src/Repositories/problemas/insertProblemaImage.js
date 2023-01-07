@@ -7,7 +7,7 @@ const insertProblemaImage = async (
   const pool = getPool();
 
   const [{ insertId }] = await pool.query(
-    "INSERT INTO problemas_images (image, problemaId) VALUES (?, ?)",
+    "INSERT INTO problemas_images (image, problemaId) VALUES (?, ?);",
     [imageName, problemaId]
   );
 

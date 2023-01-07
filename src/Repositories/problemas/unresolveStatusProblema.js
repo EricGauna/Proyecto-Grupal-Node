@@ -1,12 +1,6 @@
 const getPool = require("../../Database/getPool");
-const {
-  id,
-} = require("../../Schemas/users/createUserSchema");
 
-const unresolveStatusProblema = async (
-  problema
-) => {
-  const { id } = problema;
+const unresolveStatusProblema = async (id) => {
   const pool = getPool();
 
   await pool.query(

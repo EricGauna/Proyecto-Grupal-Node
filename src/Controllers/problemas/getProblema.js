@@ -11,11 +11,11 @@ const getProblema = async (req, res, next) => {
       req.query
     );
 
-    const posts = await SelectProblemas(req.query);
+    const problemas = await SelectProblemas(req.query);
 
     res
       .status(200)
-      .send({ status: "ok", data: posts });
+      .send({ status: "ok", data: problemas });
   } catch (error) {
     next(error);
   }

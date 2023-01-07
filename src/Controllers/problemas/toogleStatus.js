@@ -16,31 +16,23 @@ const toogleStatus = async (req, res, next) => {
 
     const problema = await SelectProblemaId(id);
 
+
     if (!problema) {
       generateErrors(
         "The problem you are trying to resolve doesn't exist",
         404
       );
     }
-/*       const resolved = await resolveStatusProblema(id);
- */
-      // Este controller va alternando entre problema resuelto y no resuelto, de manera predefinida tiene 1(TRUE) como activo, le daremos la opcion de cambiar al admin de la pagina, a no resuelto si el problema vuelve a aparecer.
-      let resolved;
-      let statusCode;
-      
-// Si ya esta el estado como true(activo) lo pasamos a false, como resuelto, le asignamos el codigo 200. Si no cambiamos el estado False(resuelto) a True(Activo)
-      if (problema) {
-          resolveStatusProblema(id);
-          resolved = false;
-          statusCode = 200;
-      } else {
-          unresolveStatusProblema(id);
-          resolved = true;
-          statusCode = 200;
-      }
+    console.log(problema.estado);
+    if (problema.estado === 1) {
+      await resolveStatusProblema(id);
+    } else {
+      await unresolveStatusProblema(id);
+    }
+
     res
-     .status(statusCode)
-     .send({ status: "ok", data: { problema } });
+      .status(400)
+      .send({ status: "ok", data: { problema } });
   } catch (error) {
     next(error);
   }
