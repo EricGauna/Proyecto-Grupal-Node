@@ -11,13 +11,15 @@ const {
 } = require("../../Schemas/problemas");
 const { generateErrors } = require("../../utils");
 
-const toggleLike = async (req, res, next) => {
+const ToggleLike = async (req, res, next) => {
   try {
     const { id: problemasId } = req.params;
     await ProblemasIdSchema.validateAsync(
       problemasId
     );
-    const problema = await SelectProblemaId(problemasId);
+    const problema = await SelectProblemaId(
+      problemasId
+    );
 
     if (!problema) {
       generateErrors(
@@ -54,4 +56,4 @@ const toggleLike = async (req, res, next) => {
   }
 };
 
-module.exports = toggleLike;
+module.exports = ToggleLike;

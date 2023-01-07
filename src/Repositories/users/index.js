@@ -1,11 +1,13 @@
 const insertUser = require("./insertUser");
 const selectUserByemail = require("./selectUserByemail");
-const selectUserId = require("./selectUserId");
+const SelectUserId = require("./SelectUserId");
+const DeleteUserDB = require("./DeleteUserDB");
 
 
 module.exports = {
   insertUser,
   selectUserByemail,
-  selectUserId,
+  SelectUserId,
+  DeleteUserDB,
 };
 

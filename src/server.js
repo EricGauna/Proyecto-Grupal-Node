@@ -9,12 +9,16 @@ const { PORT } = process.env;
 const {
   createUsers,
   loginUsers,
+  DeleteUser,
 } = require("./Controllers/users");
 
 const {
   createProblema,
   getProblema,
   toogleStatus,
+  deleteProblema,
+  editProblema,
+  getProblemaImage,
 } = require("./Controllers/problemas/");
 
 // Middlewares
@@ -26,7 +30,7 @@ const {
 } = require("./Middlewares");
 const validateAuth = require("./Middlewares/validAuth");
 const {
-  toggleLike,
+  ToggleLike,
 } = require("./Controllers/likes");
 
 const app = express();
@@ -43,6 +47,7 @@ app.use(fileUpload());
 // Endpoints usuarios:
 
 app.post("/user", createUsers);
+app.delete("/users/:id", validateAuth, Admin, DeleteUser);
 app.post("/login", loginUsers);
 
 // Endpoints problemas:
@@ -53,14 +58,22 @@ app.post(
   Admin,
   createProblema
 );
+app.delete(
+  "/problemas/:id",
+  validateAuth,
+  Admin,
+  deleteProblema
+);
 app.get("/search", getProblema);
+app.get("/search/:id", getProblemaImage);
 app.post(
   "/problemas/:id/like",
   validateAuth,
-  toggleLike
+  ToggleLike
 );
+app.put("/problemas/:id/edit", validateAuth, Admin, editProblema)
 app.put(
-  "/problemas/:id",
+  "/problemas/:id/status",
   validateAuth,
   Admin,
   toogleStatus

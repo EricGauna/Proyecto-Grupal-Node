@@ -1,5 +1,5 @@
 const {
-  selectUserId,
+  SelectUserId,
 } = require("../Repositories/users");
 const { generateErrors } = require("../utils");
 
@@ -7,9 +7,7 @@ const Admin = async (req, res, next) => {
   try {
     const loggedUserId = req.auth.id;
 
-    const user = await selectUserId(
-      loggedUserId
-    );
+    const user = await SelectUserId(loggedUserId);
 
     if (user.role !== "admin") {
       generateErrors(

@@ -1,3 +1,5 @@
 const generateErrors = require("./generateErrors");
+const addImage = require("./addImage");
 
-module.exports = { generateErrors };
+
+module.exports = { generateErrors, addImage };

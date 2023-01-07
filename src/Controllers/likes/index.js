@@ -1,3 +1,3 @@
-const toggleLike = require("./toggleLike")
+const ToggleLike = require("./ToggleLike");
 
-module.exports = { toggleLike };
+module.exports = { ToggleLike };
