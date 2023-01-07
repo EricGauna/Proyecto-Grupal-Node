@@ -40,7 +40,7 @@ const loginUsers = async (req, res, next) => {
         expiresIn: "7d",
       }
     );
-
+console.log("User Logged");
     res
       .status(200)
       .send({ status: "ok", data: { token } });
