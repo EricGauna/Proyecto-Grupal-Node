@@ -7,7 +7,7 @@ const selectLikeProblemaUser = async (
   const pool = getPool();
 
   const [[like]] = await pool.query(
-    "SELECT * FROM likes WHERE postId = ? AND userId = ?",
+    "SELECT * FROM likes WHERE problemasId = ? AND userId = ?",
     [problemaId, userId]
   );
 

@@ -40,7 +40,7 @@ const toogleStatus = async (req, res, next) => {
       }
     res
      .status(statusCode)
-     .send({ status: "ok", data: { liked } });
+     .send({ status: "ok", data: { problema } });
   } catch (error) {
     next(error);
   }

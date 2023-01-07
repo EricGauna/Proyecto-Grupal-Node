@@ -7,7 +7,7 @@ const removeLike = async (
   const pool = getPool();
 
   await pool.query(
-    "DELETE FROM likes WHERE problemaId = ? AND userId = ?",
+    "DELETE FROM likes WHERE problemasId = ? AND userId = ?",
     [problemasId, userId]
   );
 };
