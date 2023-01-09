@@ -5,12 +5,12 @@ const insertProblema = async (problema) => {
 
   const pool = getPool();
 
-  const [{ insertProblema }] = await pool.query(
+  const [{ insertId }] = await pool.query(
     "INSERT INTO problemas (title, description, barrio, ciudad, userId ) VALUES (?, ?, ?, ?, ?)",
     [title, description, barrio, ciudad, userId ]
   );
 
-  return insertProblema;
+  return insertId;
 };
 
 module.exports = insertProblema;

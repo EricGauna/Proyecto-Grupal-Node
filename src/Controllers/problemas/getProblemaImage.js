@@ -1,13 +1,13 @@
 const {
-  SelectProblemaId,
-  deleteProblemaDb,
-} = require("../../Repositories/problemas");
-const {
   ProblemasIdSchema,
 } = require("../../Schemas/problemas");
+const {
+  SelectProblemaId,
+  selectProblemaImages,
+} = require("../../Repositories/problemas");
 const { generateErrors } = require("../../utils");
 
-const deleteProblema = async (req, res, next) => {
+const getProblema = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -18,16 +18,17 @@ const deleteProblema = async (req, res, next) => {
     if (!problema) {
       generateErrors("Problem doesn't exist", 404);
     }
-    await deleteProblemaDb(id);
+
+    const problemasImages = await selectProblemaImages(id);
+
+    problema.images = problemasImages;
+
     res
       .status(200)
-      .send({
-        status: "ok",
-        message: "Problem deleted",
-      });
+      .send({ status: "ok", data: problema });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = deleteProblema;
+module.exports = getProblema;

@@ -1,6 +1,6 @@
 const getPool = require("../../Database/getPool");
 
-const deleteProblema = async (id) => {
+const deleteProblemaDb = async (id) => {
   const pool = getPool();
 
   await pool.query(
@@ -9,4 +9,4 @@ const deleteProblema = async (id) => {
   );
 };
 
-module.exports = deleteProblema;
+module.exports = deleteProblemaDb;

@@ -23,8 +23,6 @@ CREATE TABLE problemas (
   
 );
 
-
-
 CREATE TABLE problemas_images (
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
     image VARCHAR(100) NOT NULL,
@@ -45,7 +43,3 @@ CREATE TABLE likes (
         ON DELETE CASCADE
 );
 
-drop table likes;
-drop table problemas;
-drop table problemas_images;
-drop table users;

@@ -1,14 +1,13 @@
 const {
   insertProblema,
-  insertPoblemaImage,
+  insertProblemaImage,
 } = require("../../Repositories/problemas");
 const {
   createProblemaSchema,
 } = require("../../Schemas/problemas");
 const {
-  processAndSaveImage,
-  generateErrors,
-} = require("../../utils");
+  addImage,
+  } = require("../../utils");
 
 const createProblema = async (req, res, next) => {
   try {
@@ -20,7 +19,7 @@ const createProblema = async (req, res, next) => {
 
     const { title, description, barrio, ciudad } =
       req.body;
-
+    
     const insertedProblemaId =
       await insertProblema({
         title,
@@ -29,7 +28,7 @@ const createProblema = async (req, res, next) => {
         ciudad,
         userId,
       });
-
+    
     let images = req.files?.images || [];
 
     if (!Array.isArray(images)) {
@@ -39,12 +38,12 @@ const createProblema = async (req, res, next) => {
     const uploadedImages = [];
 
     for (const image of images) {
-      const imageName = await processAndSaveImage(
+      const imageName = await addImage(
         image.data
       );
 
       const insertedImageId =
-        await insertPoblemaImage(
+        await insertProblemaImage(
           imageName,
           insertedProblemaId
         );
@@ -67,6 +66,7 @@ const createProblema = async (req, res, next) => {
         images: uploadedImages,
       },
     });
+    console.log("Problem created");
   } catch (error) {
     next(error);
   }

@@ -1,14 +1,14 @@
 const getPool = require("../../Database/getPool");
 
 const insertProblemaImage = async (
-  imageName,
+  image,
   problemaId
 ) => {
   const pool = getPool();
 
   const [{ insertId }] = await pool.query(
     "INSERT INTO problemas_images (image, problemaId) VALUES (?, ?);",
-    [imageName, problemaId]
+    [image, problemaId]
   );
 
   return insertId;

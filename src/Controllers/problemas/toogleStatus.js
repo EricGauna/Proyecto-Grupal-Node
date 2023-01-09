@@ -24,15 +24,18 @@ const toogleStatus = async (req, res, next) => {
       );
     }
     console.log(problema.estado);
-    if (problema.estado === 1) {
-      await resolveStatusProblema(id);
-    } else {
-      await unresolveStatusProblema(id);
+    const problemResolvedFun = (problem) =>
+    {
+      if (problema.estado === 1) {
+      resolveStatusProblema(id);
+       } else {
+      unresolveStatusProblema(id);
+      }return problem
     }
-
+    const problemResolved = problemResolvedFun(problema);
     res
       .status(400)
-      .send({ status: "ok", data: { problema } });
+      .send({ status: "ok", data: { problemResolved } });
   } catch (error) {
     next(error);
   }

@@ -1,19 +1,26 @@
 const Joi = require("joi");
 
-const filterProblemasSchema = Joi.object({
-  title: Joi.string().max(200).messages({}),
+const editProblemaIdSchema = Joi.object({
+  title: Joi.string()
+    .min(4)
+    .max(200)
+    .required()
+    .messages({}),
   description: Joi.string()
+    .min(4)
     .max(5000)
+    .required()
     .messages({}),
   ciudad: Joi.string()
     .min(4)
     .max(100)
+    .required()
     .messages({}),
   barrio: Joi.string()
     .min(4)
     .max(100)
+    .required()
     .messages({}),
-  estado: Joi.number()
 });
 
-module.exports = filterProblemasSchema;
+module.exports = editProblemaIdSchema;
