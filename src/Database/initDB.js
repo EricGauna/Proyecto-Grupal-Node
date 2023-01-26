@@ -9,18 +9,10 @@ const initDb = async () => {
 
     console.log("Deleting tables...");
 
-    await pool.query(
-      "DROP TABLE IF EXISTS likes;"
-    );
-    await pool.query(
-      "DROP TABLE IF EXISTS problemas_images;"
-    );
-    await pool.query(
-      "DROP TABLE IF EXISTS problemas;"
-    );
-    await pool.query(
-      "DROP TABLE IF EXISTS users;"
-    );
+    await pool.query("DROP TABLE IF EXISTS likes;");
+    await pool.query("DROP TABLE IF EXISTS problemas_images;");
+    await pool.query("DROP TABLE IF EXISTS problemas;");
+    await pool.query("DROP TABLE IF EXISTS users;");
 
     console.log("Creating users table...");
 
@@ -51,9 +43,7 @@ const initDb = async () => {
 );
     `);
 
-    console.log(
-      "Creating problemas_images table..."
-    );
+    console.log("Creating problemas_images table...");
 
     await pool.query(`
      CREATE TABLE problemas_images (

@@ -20,7 +20,6 @@ CREATE TABLE problemas (
     userId INT UNSIGNED NOT NULL,
     estado BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (userId) REFERENCES users(id)
-  
 );
 
 CREATE TABLE problemas_images (

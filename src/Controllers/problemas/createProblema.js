@@ -2,33 +2,25 @@ const {
   insertProblema,
   insertProblemaImage,
 } = require("../../Repositories/problemas");
-const {
-  createProblemaSchema,
-} = require("../../Schemas/problemas");
-const {
-  addImage,
-  } = require("../../utils");
+const { createProblemaSchema } = require("../../Schemas/problemas");
+const { addImage } = require("../../utils");
 
 const createProblema = async (req, res, next) => {
   try {
     const userId = req.auth.id;
 
-    await createProblemaSchema.validateAsync(
-      req.body
-    );
+    await createProblemaSchema.validateAsync(req.body);
 
-    const { title, description, barrio, ciudad } =
-      req.body;
-    
-    const insertedProblemaId =
-      await insertProblema({
-        title,
-        description,
-        barrio,
-        ciudad,
-        userId,
-      });
-    
+    const { title, description, barrio, ciudad } = req.body;
+
+    const insertedProblemaId = await insertProblema({
+      title,
+      description,
+      barrio,
+      ciudad,
+      userId,
+    });
+
     let images = req.files?.images || [];
 
     if (!Array.isArray(images)) {
@@ -38,15 +30,12 @@ const createProblema = async (req, res, next) => {
     const uploadedImages = [];
 
     for (const image of images) {
-      const imageName = await addImage(
-        image.data
-      );
+      const imageName = await addImage(image.data);
 
-      const insertedImageId =
-        await insertProblemaImage(
-          imageName,
-          insertedProblemaId
-        );
+      const insertedImageId = await insertProblemaImage(
+        imageName,
+        insertedProblemaId
+      );
 
       uploadedImages.push({
         id: insertedImageId,
