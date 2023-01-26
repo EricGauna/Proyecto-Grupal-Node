@@ -4,6 +4,7 @@ const toogleStatus = require("./toogleStatus");
 const deleteProblema = require("./deleteProblema");
 const editProblema = require("./editProblema");
 const getProblemaImage = require("./getProblemaImage");
+const getTopProblemas = require("./getTopProblemas");
 
 module.exports = {
   createProblema,
@@ -12,4 +13,5 @@ module.exports = {
   deleteProblema,
   editProblema,
   getProblemaImage,
+  getTopProblemas,
 };

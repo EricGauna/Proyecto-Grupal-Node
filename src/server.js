@@ -6,11 +6,7 @@ const fileUpload = require("express-fileupload");
 const { PORT } = process.env;
 
 // Cotrollers
-const {
-  createUsers,
-  loginUsers,
-  DeleteUser,
-} = require("./Controllers/users");
+const { createUsers, loginUsers, DeleteUser } = require("./Controllers/users");
 
 const {
   createProblema,
@@ -19,19 +15,14 @@ const {
   deleteProblema,
   editProblema,
   getProblemaImage,
+  getTopProblemas,
 } = require("./Controllers/problemas/");
 
 // Middlewares
 
-const {
-  handle404,
-  handleErrors,
-  Admin,
-} = require("./Middlewares");
+const { handle404, handleErrors, Admin } = require("./Middlewares");
 const validateAuth = require("./Middlewares/validAuth");
-const {
-  ToggleLike,
-} = require("./Controllers/likes");
+const { ToggleLike } = require("./Controllers/likes");
 
 const app = express();
 
@@ -52,40 +43,19 @@ app.post("/login", loginUsers);
 
 // Endpoints problemas:
 
-app.post(
-  "/create",
-  validateAuth,
-  Admin,
-  createProblema
-);
-app.delete(
-  "/problemas/:id",
-  validateAuth,
-  Admin,
-  deleteProblema
-);
+app.post("/create", validateAuth, Admin, createProblema);
+app.delete("/problemas/:id", validateAuth, Admin, deleteProblema);
 app.get("/search", getProblema);
+app.get("/top", getTopProblemas);
 app.get("/search/:id", getProblemaImage);
-app.post(
-  "/problemas/:id/like",
-  validateAuth,
-  ToggleLike
-);
-app.put("/problemas/:id/edit", validateAuth, Admin, editProblema)
-app.put(
-  "/problemas/:id/status",
-  validateAuth,
-  Admin,
-  toogleStatus
-);
+app.post("/problemas/:id/like", validateAuth, ToggleLike);
+app.put("/problemas/:id/edit", validateAuth, Admin, editProblema);
+app.put("/problemas/:id/status", validateAuth, Admin, toogleStatus);
 
 app.use(handle404);
 
 app.use(handleErrors);
 
 app.listen(PORT, () => {
-  console.log(
-    "Server listening on port:",
-    ` ${PORT}`
-  );
+  console.log("Server listening on port:", ` ${PORT}`);
 });

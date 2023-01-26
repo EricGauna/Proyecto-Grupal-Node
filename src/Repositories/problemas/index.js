@@ -3,10 +3,11 @@ const insertProblemaImage = require("./insertProblemaImage");
 const SelectProblemas = require("./SelectProblemas");
 const SelectProblemaId = require("./SelectProblemaId");
 const resolveStatusProblema = require("./resolveStatusProblema");
-const unresolveStatusProblema = require("./unresolveStatusProblema")
+const unresolveStatusProblema = require("./unresolveStatusProblema");
 const deleteProblemaDb = require("./deleteProblemaDb");
-const updateProblemaId = require("./updateProblemaId")
-const selectProblemaImages=require("./selectProblemaImages")
+const updateProblemaId = require("./updateProblemaId");
+const selectProblemaImages = require("./selectProblemaImages");
+const SelectTopProblemas = require("./SelectTopProblemas");
 
 module.exports = {
   insertProblema,
@@ -18,4 +19,5 @@ module.exports = {
   deleteProblemaDb,
   updateProblemaId,
   selectProblemaImages,
+  SelectTopProblemas,
 };
