@@ -2,7 +2,6 @@ require("dotenv").config();
 const bcrypt = require("bcrypt");
 const getPool = require("./getPool");
 
-
 const populateDb = async () => {
   try {
     const pool = getPool();
@@ -27,12 +26,16 @@ const populateDb = async () => {
 
     console.log("Inserting posts...");
 
+    //Formateo de Fecha para adaptarlo a MYSQL
+
+    let currentdate = new Date().toISOString().slice(0, 19).replace("T", " ");
+
     await pool.query(`
-        INSERT INTO problemas (title, description, barrio, ciudad, userId) VALUES 
-        ("Obras en la acera", "Obras en la esquina de Panaderos", "Lavapies", "Madrid", 1),
-        ("Socabones en la calzada", "Socabones a la altura del N21 en la calle Portugal", "Moncloa", "Madrid", 1),
-        ("Derrumbe de casa", "Derrumbe de casa de 2 alturas obstaculizanbdo calzada y acera", "Vallecas", "Madrid", 1),
-        ("Acera rota", "Acera pendiente de reparacion avisado al ayuntamiento", "Vallecas", "Madrid", 1)
+        INSERT INTO problemas (fecha, title, description, barrio, ciudad, userId) VALUES 
+        ("${currentdate}", "Obras en la acera", "Obras en la esquina de Panaderos", "Lavapies", "Madrid", 1),
+        ("${currentdate}", "Socabones en la calzada", "Socabones a la altura del N21 en la calle Portugal", "Moncloa", "Madrid", 1),
+        ("${currentdate}", "Derrumbe de casa", "Derrumbe de casa de 2 alturas obstaculizanbdo calzada y acera", "Vallecas", "Madrid", 1),
+        ("${currentdate}", "Acera rota", "Acera pendiente de reparacion avisado al ayuntamiento", "Vallecas", "Madrid", 1)
     `);
 
     console.log("Inserting likes...");

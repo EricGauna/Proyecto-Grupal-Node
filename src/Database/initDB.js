@@ -32,6 +32,7 @@ const initDb = async () => {
     await pool.query(`
       CREATE TABLE problemas (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    fecha DATETIME NOT NULL,
     title VARCHAR(200) NOT NULL,
     description VARCHAR(5000) NOT NULL,
     barrio VARCHAR(200),
