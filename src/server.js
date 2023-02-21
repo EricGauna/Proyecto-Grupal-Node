@@ -19,7 +19,7 @@ const {
   deleteProblema,
   editProblema,
   getProblemaImage,
-} = require("./Controllers/problemas/");
+} = require("./Controllers/problemas");
 
 // Middlewares
 
@@ -47,7 +47,7 @@ app.use(fileUpload());
 // Endpoints usuarios:
 
 app.post("/user", createUsers);
-app.delete("/users/:id", validateAuth, Admin, DeleteUser);
+app.delete("/user/:id", validateAuth, Admin, DeleteUser);
 app.post("/login", loginUsers);
 
 // Endpoints problemas:
@@ -59,21 +59,21 @@ app.post(
   createProblema
 );
 app.delete(
-  "/problemas/:id",
+  "/problema/:id",
   validateAuth,
   Admin,
   deleteProblema
 );
-app.get("/search", getProblema);
-app.get("/search/:id", getProblemaImage);
+app.get("/problema", getProblema);
+app.get("/problema/:id", getProblemaImage);
 app.post(
   "/problemas/:id/like",
   validateAuth,
   ToggleLike
 );
-app.put("/problemas/:id/edit", validateAuth, Admin, editProblema)
+app.put("/problema/:id/edit", validateAuth, Admin, editProblema)
 app.put(
-  "/problemas/:id/status",
+  "/problema/:id/status",
   validateAuth,
   Admin,
   toogleStatus
