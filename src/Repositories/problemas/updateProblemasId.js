@@ -1,6 +1,6 @@
 const getPool = require("../../Database/getPool");
 
-const updateProblemaId = async (problema) => {
+const updateProblemasId = async (problema) => {
   const {
     id,
     title,
@@ -17,4 +17,4 @@ const updateProblemaId = async (problema) => {
   );
 };
 
-module.exports = updateProblemaId;
+module.exports = updateProblemasId;

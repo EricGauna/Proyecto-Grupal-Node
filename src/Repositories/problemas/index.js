@@ -1,21 +1,21 @@
-const insertProblema = require("./insertProblema");
-const insertProblemaImage = require("./insertProblemaImage");
+const insertProblemas = require("./insertProblemas");
+const insertProblemasImage = require("./insertProblemasImage");
 const SelectProblemas = require("./SelectProblemas");
-const SelectProblemaId = require("./SelectProblemaId");
-const resolveStatusProblema = require("./resolveStatusProblema");
-const unresolveStatusProblema = require("./unresolveStatusProblema")
+const SelectProblemasId = require("./SelectProblemasId");
+const resolveStatusProblemas = require("./resolveStatusProblemas");
+const unresolveStatusProblemas = require("./unresolveStatusProblema")
 const deleteProblemaDb = require("./deleteProblemaDb");
-const updateProblemaId = require("./updateProblemaId")
-const selectProblemaImages=require("./selectProblemaImages")
+const updateProblemaId = require("./updateProblemasId")
+const selectProblemasImages=require("./selectProblemasImages")
 
 module.exports = {
-  insertProblema,
-  insertProblemaImage,
+  insertProblemas,
+  insertProblemasImage,
   SelectProblemas,
-  SelectProblemaId,
-  resolveStatusProblema,
-  unresolveStatusProblema,
+  SelectProblemasId,
+  resolveStatusProblemas,
+  unresolveStatusProblemas,
   deleteProblemaDb,
   updateProblemaId,
-  selectProblemaImages,
+  selectProblemasImages,
 };

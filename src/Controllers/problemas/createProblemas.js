@@ -1,27 +1,27 @@
 const {
-  insertProblema,
-  insertProblemaImage,
+  insertProblemas,
+  insertProblemasImage,
 } = require("../../Repositories/problemas");
 const {
-  createProblemaSchema,
+  createProblemasSchema,
 } = require("../../Schemas/problemas");
 const {
   addImage,
   } = require("../../utils");
 
-const createProblema = async (req, res, next) => {
+const createProblemas = async (req, res, next) => {
   try {
     const userId = req.auth.id;
 
-    await createProblemaSchema.validateAsync(
+    await createProblemasSchema.validateAsync(
       req.body
     );
 
     const { title, description, barrio, ciudad } =
       req.body;
     
-    const insertedProblemaId =
-      await insertProblema({
+    const insertedProblemasId =
+      await insertProblemas({
         title,
         description,
         barrio,
@@ -43,9 +43,9 @@ const createProblema = async (req, res, next) => {
       );
 
       const insertedImageId =
-        await insertProblemaImage(
+        await insertProblemasImage(
           imageName,
-          insertedProblemaId
+          insertedProblemasId
         );
 
       uploadedImages.push({
@@ -57,7 +57,7 @@ const createProblema = async (req, res, next) => {
     res.status(201).send({
       status: "ok",
       data: {
-        id: insertedProblemaId,
+        id: insertedProblemasId,
         title,
         description,
         barrio,
@@ -72,4 +72,4 @@ const createProblema = async (req, res, next) => {
   }
 };
 
-module.exports = createProblema;
+module.exports = createProblemas;

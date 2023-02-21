@@ -5,7 +5,7 @@ const {
   filterProblemasSchema,
 } = require("../../Schemas/problemas");
 
-const getProblema = async (req, res, next) => {
+const getProblemas = async (req, res, next) => {
   try {
     await filterProblemasSchema.validateAsync(
       req.query
@@ -21,4 +21,4 @@ const getProblema = async (req, res, next) => {
   }
 };
 
-module.exports = getProblema;
+module.exports = getProblemas;

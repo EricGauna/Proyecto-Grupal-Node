@@ -7,7 +7,7 @@ const {
 } = require("../../Schemas/problemas");
 const { generateErrors } = require("../../utils");
 
-const deleteProblema = async (req, res, next) => {
+const deleteProblemas = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -30,4 +30,4 @@ const deleteProblema = async (req, res, next) => {
   }
 };
 
-module.exports = deleteProblema;
+module.exports = deleteProblemas;

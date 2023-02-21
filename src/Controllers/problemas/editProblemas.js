@@ -7,7 +7,7 @@ const {
   ProblemasIdSchema,
 } = require("../../Schemas/problemas");
 
-const editPost = async (req, res, next) => {
+const editProblemas = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -36,4 +36,4 @@ const editPost = async (req, res, next) => {
   }
 };
 
-module.exports = editPost;
+module.exports = editProblemas;

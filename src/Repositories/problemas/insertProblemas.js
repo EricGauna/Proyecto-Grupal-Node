@@ -1,6 +1,6 @@
 const getPool = require("../../Database/getPool");
 
-const insertProblema = async (problema) => {
+const insertProblemas = async (problema) => {
   const { title, description , barrio, ciudad, userId } = problema;
 
   const pool = getPool();
@@ -13,4 +13,4 @@ const insertProblema = async (problema) => {
   return insertId;
 };
 
-module.exports = insertProblema;
+module.exports = insertProblemas;

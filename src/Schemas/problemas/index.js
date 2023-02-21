@@ -1,12 +1,12 @@
-const createProblemaSchema = require("./createProblemaSchema");
+const createProblemasSchema = require("./createProblemaSchema");
 const filterProblemasSchema = require("./filterProblemasSchema");
 const ProblemasIdSchema = require("./ProblemasIdSchema");
-const editProblemaIdSchema=require("./editProblemaIdSchema")
+const editProblemasIdSchema=require("./editProblemaIdSchema")
 
 
 module.exports = {
-  createProblemaSchema,
+  createProblemasSchema,
   filterProblemasSchema,
   ProblemasIdSchema,
-  editProblemaIdSchema,
+  editProblemasIdSchema,
 };

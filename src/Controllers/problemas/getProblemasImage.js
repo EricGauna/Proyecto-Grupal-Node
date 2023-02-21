@@ -2,24 +2,24 @@ const {
   ProblemasIdSchema,
 } = require("../../Schemas/problemas");
 const {
-  SelectProblemaId,
-  selectProblemaImages,
+  SelectProblemasId,
+  selectProblemasImages,
 } = require("../../Repositories/problemas");
 const { generateErrors } = require("../../utils");
 
-const getProblema = async (req, res, next) => {
+const getProblemasImage = async (req, res, next) => {
   try {
     const { id } = req.params;
 
     await ProblemasIdSchema.validateAsync(id);
 
-    const problema = await SelectProblemaId(id);
+    const problema = await SelectProblemasId(id);
 
     if (!problema) {
       generateErrors("Problem doesn't exist", 404);
     }
 
-    const problemasImages = await selectProblemaImages(id);
+    const problemasImages = await selectProblemasImages(id);
 
     problema.images = problemasImages;
 
@@ -31,4 +31,4 @@ const getProblema = async (req, res, next) => {
   }
 };
 
-module.exports = getProblema;
+module.exports = getProblemasImage;

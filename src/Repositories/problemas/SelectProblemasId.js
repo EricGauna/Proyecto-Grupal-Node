@@ -1,6 +1,6 @@
 const getPool = require("../../Database/getPool");
 
-const SelectProblemaId = async (id) => {
+const SelectProblemasId = async (id) => {
   const pool = getPool();
 
   const [[problema]] = await pool.query(
@@ -11,4 +11,4 @@ const SelectProblemaId = async (id) => {
   return problema;
 };
 
-module.exports = SelectProblemaId;
+module.exports = SelectProblemasId;

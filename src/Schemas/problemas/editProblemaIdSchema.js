@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const editProblemaIdSchema = Joi.object({
+const editProblemasIdSchema = Joi.object({
   title: Joi.string()
     .min(4)
     .max(200)
@@ -23,4 +23,4 @@ const editProblemaIdSchema = Joi.object({
     .messages({}),
 });
 
-module.exports = editProblemaIdSchema;
+module.exports = editProblemasIdSchema;

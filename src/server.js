@@ -13,12 +13,12 @@ const {
 } = require("./Controllers/users");
 
 const {
-  createProblema,
-  getProblema,
+  createProblemas,
+  getProblemas,
   toogleStatus,
-  deleteProblema,
-  editProblema,
-  getProblemaImage,
+  deleteProblemas,
+  editProblemas,
+  getProblemasImage,
 } = require("./Controllers/problemas");
 
 // Middlewares
@@ -37,7 +37,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://127.0.0.1:3306"],
+    origin: ["http://localhost:3000"],
   })
 );
 
@@ -46,34 +46,34 @@ app.use(fileUpload());
 
 // Endpoints usuarios:
 
-app.post("/user", createUsers);
+app.post("/registeruser", createUsers);
 app.delete("/user/:id", validateAuth, Admin, DeleteUser);
 app.post("/login", loginUsers);
 
 // Endpoints problemas:
 
 app.post(
-  "/create",
+  "/createproblema",
   validateAuth,
   Admin,
-  createProblema
+  createProblemas
 );
 app.delete(
-  "/problema/:id",
+  "/problemas/:id",
   validateAuth,
   Admin,
-  deleteProblema
+  deleteProblemas
 );
-app.get("/problema", getProblema);
-app.get("/problema/:id", getProblemaImage);
+app.get("/problemas", getProblemas);
+app.get("/problemas/:id", getProblemasImage);
 app.post(
   "/problemas/:id/like",
   validateAuth,
   ToggleLike
 );
-app.put("/problema/:id/edit", validateAuth, Admin, editProblema)
+app.put("/problemas/:id/edit", validateAuth, Admin, editProblemas)
 app.put(
-  "/problema/:id/status",
+  "/problemas/:id/status",
   validateAuth,
   Admin,
   toogleStatus

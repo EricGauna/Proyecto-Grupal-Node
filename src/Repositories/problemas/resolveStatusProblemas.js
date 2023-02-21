@@ -1,6 +1,6 @@
 const getPool = require("../../Database/getPool");
 
-const resolveStatusProblema = async (id) => {
+const resolveStatusProblemas = async (id) => {
   const pool = getPool();
 
   await pool.query(
@@ -9,4 +9,4 @@ const resolveStatusProblema = async (id) => {
   );
 };
 
-module.exports = resolveStatusProblema;
+module.exports = resolveStatusProblemas;

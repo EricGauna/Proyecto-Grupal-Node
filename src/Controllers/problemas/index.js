@@ -1,15 +1,15 @@
-const createProblema = require("./createProblema");
-const getProblema = require("./getProblema");
+const createProblemas = require("./createProblemas");
+const getProblemas = require("./getProblemas");
 const toogleStatus = require("./toogleStatus");
-const deleteProblema = require("./deleteProblema");
-const editProblema = require("./editProblema");
-const getProblemaImage = require("./getProblemaImage");
+const deleteProblemas = require("./deleteProblemas");
+const editProblemas = require("./editProblemas");
+const getProblemasImage = require("./getProblemasImage");
 
 module.exports = {
-  createProblema,
-  getProblema,
+  createProblemas,
+  getProblemas,
   toogleStatus,
-  deleteProblema,
-  editProblema,
-  getProblemaImage,
+  deleteProblemas,
+  editProblemas,
+  getProblemasImage,
 };
