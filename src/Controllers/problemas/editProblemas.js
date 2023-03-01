@@ -1,9 +1,9 @@
 const {
-  SelectProblemaId,
-  updateProblemaId,
+  SelectProblemasId,
+  updateProblemasId,
 } = require("../../Repositories/problemas");
 const {
-  editProblemaIdSchema,
+  editProblemasIdSchema,
   ProblemasIdSchema,
 } = require("../../Schemas/problemas");
 
@@ -13,7 +13,7 @@ const editProblemas = async (req, res, next) => {
 
     await ProblemasIdSchema.validateAsync(id);
 
-    const problema = await SelectProblemaId(id);
+    const problema = await SelectProblemasId(id);
 
     if (!problema) {
       generateError(
@@ -22,11 +22,11 @@ const editProblemas = async (req, res, next) => {
       );
     }
 
-    await editProblemaIdSchema.validateAsync(req.body);
+    await editProblemasIdSchema.validateAsync(req.body);
 
-    const updatedProblema = { ...post, ...req.body };
+    const updatedProblema = { ...problema, ...req.body };
 
-    await updateProblemaId(updatedProblema);
+    await updateProblemasId(updatedProblema);
 
     res
       .status(200)
