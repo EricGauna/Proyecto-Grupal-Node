@@ -15,6 +15,8 @@ const loginUsers = async (req, res, next) => {
     const { email, password } = req.body;
 
     const user = await selectUserByemail(email);
+    console.log(user);
+    const { name, role } = user
     if (!user) {
       generateErrors("Wrong email or pass", 400);
     }
@@ -43,7 +45,7 @@ const loginUsers = async (req, res, next) => {
 console.log("User Logged");
     res
       .status(200)
-      .send({ status: "ok", data: { token } });
+      .send({ status: "ok", data: { email, token, role, name } });
   } catch (error) {
     next(error);
   }
