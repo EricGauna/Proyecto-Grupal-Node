@@ -1,11 +1,11 @@
 const getPool = require("../../Database/getPool");
 
-const selectProblemasImages = async (Id) => {
+const selectProblemasImages = async (id) => {
   const pool = getPool();
 
   const [problemasImages] = await pool.query(
     "SELECT * FROM problemas_images WHERE problemaId = ?",
-    [Id]
+    [id]
   );
 
   return problemasImages;

@@ -58,7 +58,7 @@ const initDb = async () => {
     await pool.query(`
      CREATE TABLE problemas_images (
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-    image VARCHAR(100) NOT NULL,
+    images VARCHAR(100) NOT NULL,
     problemaId INT UNSIGNED NOT NULL,
     FOREIGN KEY (problemaId) REFERENCES problemas (id) ON DELETE CASCADE
 );

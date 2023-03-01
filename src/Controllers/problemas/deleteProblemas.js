@@ -1,5 +1,5 @@
 const {
-  SelectProblemaId,
+  SelectProblemasId,
   deleteProblemaDb,
 } = require("../../Repositories/problemas");
 const {
@@ -13,7 +13,7 @@ const deleteProblemas = async (req, res, next) => {
 
     await ProblemasIdSchema.validateAsync(id);
 
-    const problema = await SelectProblemaId(id);
+    const problema = await SelectProblemasId(id);
 
     if (!problema) {
       generateErrors("Problem doesn't exist", 404);

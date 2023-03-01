@@ -5,9 +5,8 @@ const uuid = require("uuid");
 
 const uploadsPath = path.join(
   __dirname,
-  "..",
-  process.env.UPLOADS_DIR,
-  "problemas"
+  "../",
+  process.env.UPLOADS_DIR
 );
 
 const addImage = async (imageBuffer) => {
@@ -19,8 +18,8 @@ const addImage = async (imageBuffer) => {
 
   const imageMetadata = await image.metadata();
 
-  if (imageMetadata.width > 300) {
-    image.resize(300);
+  if (imageMetadata.width > 1500) {
+    image.resize(1500);
   }
 
   const imageName = `${uuid.v4()}.${

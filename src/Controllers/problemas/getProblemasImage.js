@@ -7,6 +7,8 @@ const {
 } = require("../../Repositories/problemas");
 const { generateErrors } = require("../../utils");
 
+
+
 const getProblemasImage = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -21,7 +23,7 @@ const getProblemasImage = async (req, res, next) => {
 
     const problemasImages = await selectProblemasImages(id);
 
-    problema.images = problemasImages;
+    problema.images = problemasImages
 
     res
       .status(200)

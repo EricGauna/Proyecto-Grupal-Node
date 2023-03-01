@@ -40,7 +40,7 @@ const createProblemas = async (req, res, next) => {
     for (const image of images) {
       const imageName = await addImage(
         image.data
-      );
+      ); 
 
       const insertedImageId =
         await insertProblemasImage(
@@ -50,7 +50,7 @@ const createProblemas = async (req, res, next) => {
 
       uploadedImages.push({
         id: insertedImageId,
-        image: imageName,
+        images: imageName,
       });
     }
 
