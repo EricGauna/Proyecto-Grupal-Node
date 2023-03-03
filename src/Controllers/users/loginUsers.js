@@ -16,7 +16,7 @@ const loginUsers = async (req, res, next) => {
 
     const user = await selectUserByemail(email);
     console.log(user);
-    const { name, role } = user
+    const { name, role, id } = user
     if (!user) {
       generateErrors("Wrong email or pass", 400);
     }
@@ -45,7 +45,7 @@ const loginUsers = async (req, res, next) => {
 console.log("User Logged");
     res
       .status(200)
-      .send({ status: "ok", data: { email, token, role, name } });
+      .send({ status: "ok", data: { email, token, role, name, id } });
   } catch (error) {
     next(error);
   }

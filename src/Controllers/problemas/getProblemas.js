@@ -14,8 +14,10 @@ const getProblemas = async (req, res, next) => {
     const problemas = await SelectProblemas(req.query);
 
     res
+      
       .status(200)
       .send({ status: "ok", data: problemas });
+    console.log(problemas);
   } catch (error) {
     next(error);
   }

@@ -1,4 +1,5 @@
 require("dotenv").config();
+const morgan = require("morgan")
 const path = require('path');
 const cors = require("cors");
 const express = require("express");
@@ -45,6 +46,7 @@ app.use(
 app.use('/images', express.static(path.join(__dirname, 'Uploads')));
 app.use(express.json());
 app.use(fileUpload());
+app.use(morgan('dev'))
 
 // Endpoints usuarios:
 

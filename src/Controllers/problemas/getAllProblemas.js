@@ -16,7 +16,6 @@ const getAllProblemas = async (req, res, next) => {
 
         const problemas = await SelectProblemas(req.query);
 
-        // Recorrer cada problema y recuperar las imágenes asociadas
         for (let i = 0; i < problemas.length; i++) {
             const problema = problemas[i];
             const problemasImages = await selectProblemasImages(problema.id);
