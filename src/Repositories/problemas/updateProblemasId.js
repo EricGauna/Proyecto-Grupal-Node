@@ -12,7 +12,7 @@ const updateProblemasId = async (problema) => {
   const pool = getPool();
 
   await pool.query(
-    "UPDATE problemass SET title = ?, description = ?, barrio = ?, ciudad = ? WHERE id = ?",
+    "UPDATE problemas SET title = ?, description = ?, barrio = ?, ciudad = ? WHERE id = ?",
     [title, description, id, barrio, ciudad]
   );
 };
