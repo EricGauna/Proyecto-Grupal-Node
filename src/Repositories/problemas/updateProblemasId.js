@@ -2,18 +2,18 @@ const getPool = require("../../Database/getPool");
 
 const updateProblemasId = async (problema) => {
   const {
-    id,
     title,
     description,
     barrio,
-    ciudad
+    ciudad,
+    id
   } = problema;
 
   const pool = getPool();
 
   await pool.query(
     "UPDATE problemas SET title = ?, description = ?, barrio = ?, ciudad = ? WHERE id = ?",
-    [title, description, id, barrio, ciudad]
+    [title, description, barrio, ciudad, id]
   );
 };
 

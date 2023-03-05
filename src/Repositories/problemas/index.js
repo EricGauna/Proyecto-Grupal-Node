@@ -6,7 +6,8 @@ const resolveStatusProblemas = require("./resolveStatusProblemas");
 const unresolveStatusProblemas = require("./unresolveStatusProblema")
 const deleteProblemasDb = require("./deleteProblemaDb");
 const updateProblemasId = require("./updateProblemasId")
-const selectProblemasImages=require("./selectProblemasImages")
+const selectProblemasImages = require("./selectProblemasImages")
+const deleteImagesProblema = require("./deleteImagesProblema");
 
 module.exports = {
   insertProblemas,
@@ -18,4 +19,5 @@ module.exports = {
   deleteProblemasDb,
   updateProblemasId,
   selectProblemasImages,
+  deleteImagesProblema
 };
