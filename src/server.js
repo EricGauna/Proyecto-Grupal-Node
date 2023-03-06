@@ -96,18 +96,9 @@ app.delete(
 app.get("/problemas", getAllProblemas);
 app.get("/search", getProblemas)
 app.get("/problemas/:id", getProblemasImage);
-app.post(
-  "/problemas/:id/like",
-  validateAuth,
-  ToggleLike
-);
+app.post("/problemas/:id/like", validateAuth, ToggleLike);
 app.put("/problemas/:id/edit", validateAuth, Admin, editProblemas)
-app.put(
-  "/problemas/:id/status",
-  validateAuth,
-  Admin,
-  toogleStatus
-);
+app.put("/problemas/:id/status", validateAuth, Admin, toogleStatus);
 
 app.use(handle404);
 

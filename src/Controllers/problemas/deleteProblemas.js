@@ -1,6 +1,6 @@
 const {
   SelectProblemasId,
-  deleteProblemaDb,
+  deleteProblemasDb,
 } = require("../../Repositories/problemas");
 const {
   ProblemasIdSchema,
@@ -18,7 +18,7 @@ const deleteProblemas = async (req, res, next) => {
     if (!problema) {
       generateErrors("Problem doesn't exist", 404);
     }
-    await deleteProblemaDb(id);
+    await deleteProblemasDb(id);
     res
       .status(200)
       .send({

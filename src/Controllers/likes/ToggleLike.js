@@ -1,23 +1,18 @@
-const {
-  selectLikeProblemaUser,
-  addLike,
-  removeLike,
-} = require("../../Repositories/likes");
-const {
-  SelectProblemaId,
-} = require("../../Repositories/problemas");
-const {
-  ProblemasIdSchema,
-} = require("../../Schemas/problemas");
+const { selectLikeProblemaUser, addLike, removeLike } = require("../../Repositories/likes");
+const { SelectProblemasId } = require("../../Repositories/problemas");
+const { ProblemasIdSchema } = require("../../Schemas/problemas");
+const { id } = require("../../Schemas/problemas/createProblemaSchema");
 const { generateErrors } = require("../../utils");
 
 const ToggleLike = async (req, res, next) => {
   try {
     const { id: problemasId } = req.params;
+    console.log(id);
+
     await ProblemasIdSchema.validateAsync(
       problemasId
     );
-    const problema = await SelectProblemaId(
+    const problema = await SelectProblemasId(
       problemasId
     );
 
