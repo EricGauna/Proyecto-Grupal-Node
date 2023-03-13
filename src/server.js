@@ -33,8 +33,9 @@ const {
 } = require("./Middlewares");
 const validateAuth = require("./Middlewares/validAuth");
 const {
-  ToggleLike,
+  ToggleLike, getAllLikes,
 } = require("./Controllers/likes");
+const { getAllImages } = require("./utils");
 
 const app = express();
 
@@ -53,46 +54,14 @@ app.use(morgan('dev'))
 app.post("/registeruser", createUsers);
 app.delete("/user/:id", validateAuth, Admin, DeleteUser);
 app.post("/login", loginUsers);
+app.get("/user/like", validateAuth, getAllLikes)
 
 // Endpoints problemas:
 
-app.get('/images', (req, res) => {
-  const fs = require('fs');
-  const directoryPath = path.join(__dirname, 'Uploads');
-  fs.readdir(directoryPath, (err, files) => {
-    if (err) {
-      console.error('Error leyendo la carpeta de imágenes:', err);
-      return res.status(500).send('Error interno del servidor');
-    }
+app.get('/images', getAllImages)
 
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
-    const images = files.filter(file => imageExtensions.includes(path.extname(file)));
-    console.log(images);
-
-    const response = images.map(file => ({
-      filename: file,
-      id: file.id,
-      url: `/images/${file}`,
-    }));
-
-    res.json(response);
-  });
-});
-
-
-
-app.post(
-  "/createproblema",
-  validateAuth,
-  Admin,
-  createProblemas
-);
-app.delete(
-  "/problemas/:id",
-  validateAuth,
-  Admin,
-  deleteProblemas
-);
+app.post("/createproblema", validateAuth, Admin, createProblemas);
+app.delete("/problemas/:id", validateAuth, Admin, deleteProblemas);
 app.get("/problemas", getAllProblemas);
 app.get("/search", getProblemas)
 app.get("/problemas/:id", getProblemasImage);

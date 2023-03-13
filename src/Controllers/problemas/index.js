@@ -13,5 +13,5 @@ module.exports = {
   deleteProblemas,
   editProblemas,
   getProblemasImage,
-  getAllProblemas
+  getAllProblemas,
 };
