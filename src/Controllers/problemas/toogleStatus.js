@@ -1,7 +1,7 @@
 const {
-  SelectProblemaId,
-  resolveStatusProblema,
-  unresolveStatusProblema,
+  SelectProblemasId,
+  resolveStatusProblemas,
+  unresolveStatusProblemas,
 } = require("../../Repositories/problemas");
 const {
   ProblemasIdSchema,
@@ -14,7 +14,7 @@ const toogleStatus = async (req, res, next) => {
 
     await ProblemasIdSchema.validateAsync(id);
 
-    const problema = await SelectProblemaId(id);
+    const problema = await SelectProblemasId(id);
 
 
     if (!problema) {
@@ -27,15 +27,19 @@ const toogleStatus = async (req, res, next) => {
     const problemResolvedFun = (problem) =>
     {
       if (problema.estado === 1) {
-      resolveStatusProblema(id);
+        resolveStatusProblemas(id);
+        resolved = false;
+        statusCode = 200;
        } else {
-      unresolveStatusProblema(id);
+        unresolveStatusProblemas(id);
+        resolved = true;
+        statusCode = 201;
       }return problem
     }
-    const problemResolved = problemResolvedFun(problema);
+    const data = problemResolvedFun(problema);
     res
-      .status(400)
-      .send({ status: "ok", data: { problemResolved } });
+      .status(statusCode)
+      .send({ status: "ok", data: { data } });
   } catch (error) {
     next(error);
   }
