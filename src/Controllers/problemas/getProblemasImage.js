@@ -16,8 +16,9 @@ const getProblemasImage = async (req, res, next) => {
     await ProblemasIdSchema.validateAsync(id);
 
     const problema = await SelectProblemasId(id);
+    console.log(problema);
 
-    if (!problema) {
+    if (problema.barrio === null) {
       generateErrors("Problem doesn't exist", 404);
     }
 

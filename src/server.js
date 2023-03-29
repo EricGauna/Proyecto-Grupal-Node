@@ -73,9 +73,9 @@ app.use(handle404);
 
 app.use(handleErrors);
 
-app.listen(PORT, () => {
+app.listen( PORT, () => {
   console.log(
     "Server listening on port:",
-    ` ${PORT}`
+    ` ${ PORT }`
   );
 });

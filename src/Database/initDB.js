@@ -7,6 +7,10 @@ const initDb = async () => {
   try {
     const pool = getPool();
 
+    await pool.query(
+      "CREATE DATABASE IF NOT EXISTS Ciudad_accesible;"
+    )
+
     console.log("Deleting tables...");
 
     await pool.query(
